@@ -1,5 +1,7 @@
 import {Component} from "@angular/core";
-import {Http} from "@angular/http";
+import {AuthService} from "../../common/auth/auth-http.service";
+import {Observable} from "rxjs";
+import {LoginService} from "./login-http.service";
 
 @Component({
   selector: 'app-login',
@@ -7,7 +9,16 @@ import {Http} from "@angular/http";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private http: Http) {
+
+  constructor(private loginService: LoginService) {
+  }
+
+  onLogin() {
+    console.info("click")
+    this.loginService.login()
+      .subscribe((res) => {
+
+      });
   }
 
   // onLogin() {
@@ -37,9 +48,4 @@ export class LoginComponent {
   //   //   });
   //   // console.info("after login")
   // }
-}
-class LoginUser {
-  constructor(grant_type: string, username: string, password: string) {
-  }
-
 }

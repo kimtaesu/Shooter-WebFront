@@ -8,9 +8,13 @@ import {Component, OnInit} from "@angular/core";
 export class HomeComponent implements OnInit {
 
   constructor() {
+    var a = 10;
   }
 
   ngOnInit() {
   }
 
+  haha() {
+    console.info("login")
+  }
 }
