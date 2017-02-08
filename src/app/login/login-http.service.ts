@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Response} from "@angular/http";
+import {Response, RequestOptionsArgs} from "@angular/http";
 import {Observable} from "rxjs";
 import {AuthService} from "../../common/auth/auth-http.service";
 import {ServerAPI} from "../../common/server_api";
@@ -8,14 +8,13 @@ export class LoginService {
   constructor(private authService: AuthService) {
   }
 
-  login(): Observable<Response> {
-
+  login(option: RequestOptionsArgs): Observable<Response> {
     return Observable
       .defer(() => {
         return this.authService.getAccessToken();
       })
       .concatMap((res) => {
-        return this.authService.post(ServerAPI.login, null);
+        return this.authService.post(ServerAPI.login, option);
       })
   }
 }

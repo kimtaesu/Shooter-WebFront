@@ -8,19 +8,22 @@ import {LoginComponent} from "./login/login.component";
 import {AuthServiceProvider} from "../common/auth/auth-http.provider";
 import {AuthService} from "../common/auth/auth-http.service";
 import {HttpModule} from "@angular/http";
+import {LoginService} from "./login/login-http.service";
+import { JoinComponent } from './join/join.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    JoinComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
-  providers: [AuthServiceProvider],
+  providers: [AuthServiceProvider, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
